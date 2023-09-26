@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS slack_db;
+CREATE DATABASE slack_db;
