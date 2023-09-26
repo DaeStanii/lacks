@@ -5,7 +5,7 @@ class Thread extends Model {
 
 }
 
-Post.init(
+Thread.init(
     {
         id:{
             type:DataTypes.INTEGER,
@@ -35,7 +35,7 @@ Post.init(
         timestamps:false,
         freezeTableName:true,
         underscored:true,
-        modelName:'post'
+        modelName:'thread'
     }
 );
 
