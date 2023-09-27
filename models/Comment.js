@@ -25,7 +25,7 @@ Comment.init(
                 key:'id'
             }
         },
-        created_by:{
+        user_id:{
             type:DataTypes.INTEGER,
             references:{
                 model:'user',
