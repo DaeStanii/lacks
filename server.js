@@ -6,7 +6,7 @@ const routes = require('./controllers');
 
 
 //boilerplate express, session, and handlebars setup
-const sequelize = require('./config/connection');
+const sequelize = require('./config/config.js');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
