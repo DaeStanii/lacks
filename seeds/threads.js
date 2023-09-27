@@ -2,28 +2,29 @@ const Thread = require('../models/Thread');
 
 const threadData = [
     {
+        id:1,
         thread_title: 'WELCOME to lackS',
-        created_by:1,
+        user_id:1,
     },
     {
         thread_title: 'CSS',
-        created_by:4,
+        user_id:4,
     },
     {
         thread_title: 'Javascript',
-        created_by:3,
+        user_id:3,
     },
     {
         thread_title: 'tutorial on how to make awesome CSS like, really fast bro',
-        created_by:3,
+        user_id:3,
     },
     {
         thread_title: 'CAN I GET A TA IN HERE PLZ',
-        created_by:2,
+        user_id:2,
     },
     {
         thread_title: 'Homework Studygroup!',
-        created_by:5,
+        user_id:5,
     },
 ]
 
