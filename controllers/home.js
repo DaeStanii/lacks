@@ -3,6 +3,20 @@ const {Thread, User, Comment} = require('../models');
 
 router.get('/', async (req, res) => {
 
+
+    res.render('login');
+    
+});
+
+
+router.get('/signup', async (req, res) => {
+
+
+    res.render('signup');
+
+});
+
+router.get('/home', async (req, res) => {
     const allThreads = await Thread.findAll({
         include:[{model:User},{model:Comment}],
         attributes:{exclude:['password']},
@@ -18,5 +32,7 @@ router.get('/', async (req, res) => {
         res.render('home');
     }
 });
+
+
 
 module.exports = router;
