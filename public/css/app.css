@@ -98,7 +98,8 @@
     border-bottom: 0.5px solid var(--sidebar-divider);
   }
   .sidebar__head h1 {
-    font-weight: 900;
+    font-weight: 800;
+    font-size: 19px;
   }
   .sidebar__head__name {
     margin-top: 5px;
