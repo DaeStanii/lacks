@@ -18,10 +18,7 @@ router.get('/', async (req, res) => {
 
 
 router.get('/signup', async (req, res) => {
-
-
-    res.render('signup');
-
+  (req.session.logged_in) ? res.redirect('home') : res.render('signup');
 });
 
 router.get('/home', withAuth, async (req, res) => {
