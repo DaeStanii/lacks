@@ -1,11 +1,11 @@
-const signupForm = document.querySelector('#signup');
+const loginForm = document.querySelector('#login');
 
-signupForm.addEventListener('submit', async (event) => {
+loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const usernameText = document.querySelector('#username').value.trim();
     const passwordText = document.querySelector('#password').value.trim();
 
-    const login = await fetch('/api/signup', {
+    const login = await fetch('/api/login', {
         method: 'POST',
         body: JSON.stringify({ 
             username:usernameText,

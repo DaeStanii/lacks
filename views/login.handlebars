@@ -13,26 +13,26 @@
 <img class="float-left thumbnail" src="../images/lacks logo.jpg" width="100px" height="100px">
 <h2 class="text-center">Please login</h2>
 <h5 class="subheader text-center"><a href="http://localhost:3001/signup">Or create an account</a></h5>
-<form>
+<form id="login">
   <hr>
     <div class="grid-container">
         <div class="grid-x grid-padding-x">
         <div class="medium-6 cell float-center">
-            <label>Input Email:
-            <input type="text" placeholder="Your email">
+            <label>Input Username:
+            <input type="text" placeholder="Your email" id="username">
             </label>
             <label>Input Password:
-            <input type="password" placeholder="Your Password">
+            <input type="password" placeholder="Your Password" id="password">
             </label>
         </div>
     </div>
 </form>
-<button class="submit success button float-center"><a href="http://localhost:3001/home">Login</a></button>
+<button type="submit" class="submit success button float-center">Login</button>
 
     <script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/what-input.js"></script>
     <script src="js/vendor/foundation.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/login.js"></script>
 </body>
 
 </html>
