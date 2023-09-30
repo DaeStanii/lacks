@@ -3,6 +3,8 @@ const {Thread, User, Comment} = require('../models');
 const withAuth = (req, res, next) => {
     if (req.session.logged_in) {
       res.redirect('/home');
+    } else if (!req.session.logged_in) {
+      res.redirect('/login');
     } else {
       next();
     }
@@ -23,7 +25,7 @@ router.get('/signup', async (req, res) => {
 
 });
 
-router.get('/home', async (req, res) => {
+router.get('/home', withAuth, async (req, res) => {
     const allThreads = await Thread.findAll({
         include:[{model:User},{model:Comment}],
         attributes:{exclude:['password']},
