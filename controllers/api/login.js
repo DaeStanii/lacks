@@ -2,8 +2,8 @@ const router = require('express').Router();
 
 const { User } = require('../../models');
 
-
 // Login
+// Route works!! 
 router.post('/login', async (req, res) => {
     try {
         const dbUserData = await User.findOne({
@@ -33,22 +33,12 @@ router.post('/login', async (req, res) => {
 
             res
             .status(200)
-            .json({ user: dbUserData, message: 'You are now logged in!'})
+            // .json({ user: dbUserData, message: 'You are now logged in!'})
+            .redirect('/login')
         });
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
-    }
-});
-
-// Logout
-router.post('/logout', (req, res) => {
-    if (req.session.loggedIn) {
-        req.session.destroy(() => {
-            res.status(204).end();
-        });
-    } else {
-        res.status(404).end();
     }
 });
 
