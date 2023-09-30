@@ -1,5 +1,12 @@
 const router = require('express').Router();
 const {Thread, User, Comment} = require('../models');
+const withAuth = (req, res, next) => {
+    if (req.session.logged_in) {
+      res.redirect('/home');
+    } else {
+      next();
+    }
+  };
 
 router.get('/', async (req, res) => {
 
@@ -33,6 +40,21 @@ router.get('/home', async (req, res) => {
     }
 });
 
-
+router.get('/login', withAuth, async (req, res) => {
+    try {
+      const userData = await User.findAll({
+        attributes: { exclude: ['password'] },
+      });
+  
+      const users = userData.map((project) => project.get({ plain: true }));
+  
+      res.render('home', {
+        users,
+        logged_in: req.session.logged_in,
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
 
 module.exports = router;
