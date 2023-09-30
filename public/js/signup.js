@@ -5,6 +5,7 @@ signupForm.addEventListener('submit', async (event) => {
     const usernameText = document.querySelector('#username').value.trim();
     const passwordText = document.querySelector('#password').value.trim();
 
+    console.log('did this happen? yes it did1');
     const login = await fetch('/api/signup', {
         method: 'POST',
         body: JSON.stringify({ 
@@ -13,9 +14,11 @@ signupForm.addEventListener('submit', async (event) => {
         }),
         headers: { 'Content-Type': 'application/json' },
     });
+    console.log('did this happen? yes it did2');
+    document.location.replace('/home');
     
     //const response = await login.json();
 
-    //console.log(login);
-    //console.log(response);
+    // console.log(login);
+    // console.log(response);
 });

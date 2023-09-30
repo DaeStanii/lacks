@@ -12,7 +12,7 @@ router.post('/signup', async (req, res) => {
         req.session.save(() => {
             req.session.logged_in = true;
 
-            res.status(200).redirect("/home");
+            res.status(200).json(dbUserData);
         });
     } catch (err) {
         console.log(err);
