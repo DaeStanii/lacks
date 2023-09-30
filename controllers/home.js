@@ -1,10 +1,9 @@
 const router = require('express').Router();
 const {Thread, User, Comment} = require('../models');
 const withAuth = (req, res, next) => {
-    if (req.session.logged_in) {
-      res.redirect('/home');
-    } else if (!req.session.logged_in) {
-      res.redirect('/login');
+    if (!req.session.logged_in) {
+      console.log("is this looping? -logged out");
+      res.render('login');
     } else {
       next();
     }
@@ -35,7 +34,7 @@ router.get('/home', withAuth, async (req, res) => {
     //this is for debugging with insomnia
     //res.status(200).json(threads);
 
-    if (req.session.loggedIn) {
+    if (req.session.logged_in) {
         res.render('home', threads);
     } else {
         res.render('home');
