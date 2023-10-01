@@ -11,7 +11,7 @@ const sequelize = require('./config/config.js');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 const hbs = exphbs.create();
 
@@ -44,5 +44,5 @@ app.use(routes);
 //start the server
 //force:false so our db data is not overwritten with each restart
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log(`SERVER LISTENING ON PORT ${PORT}`));
+  app.listen('0.0.0.0', PORT, () => console.log(`SERVER LISTENING ON PORT ${PORT}`));
 });
