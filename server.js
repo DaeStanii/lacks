@@ -4,7 +4,7 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const path = require('path');
-
+const seedAllTheThings = require('./seeds');
 
 //boilerplate express, session, and handlebars setup
 const sequelize = require('./config/config.js');
@@ -42,7 +42,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 //start the server
-//force:false so our db data is not overwritten with each restart
-sequelize.sync({ force: false }).then(() => {
-  app.listen('0.0.0.0', PORT, () => console.log(`SERVER LISTENING ON PORT ${PORT}`));
+//force:true will overwrite our db data with each restart, but will be reseeded with seedAllTheThings
+sequelize.sync({ force: true }).then(() => {
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`SERVER LISTENING ON PORT ${PORT}`);
+    seedAllTheThings();
+  });
 });
