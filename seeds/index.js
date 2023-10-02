@@ -18,4 +18,4 @@ const seedAllTheThings = async () => {
     process.exit();
 };
 
-seedAllTheThings();
+module.exports = seedAllTheThings;
