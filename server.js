@@ -44,8 +44,10 @@ app.use(routes);
 //start the server
 //force:true will overwrite our db data with each restart, but will be reseeded with seedAllTheThings
 sequelize.sync({ force: false }).then(() => {
+
   app.listen(PORT, () => {
     console.log(`SERVER LISTENING ON PORT ${PORT}`);
     // seedAllTheThings();
+
   });
 });

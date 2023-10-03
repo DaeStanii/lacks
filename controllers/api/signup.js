@@ -12,6 +12,7 @@ router.post('/signup', async (req, res) => {
         req.session.save(() => {
             req.session.logged_in = true;
             req.session.user_id = userInfo.id
+            req.session.username = req.body.username,
 
             res.status(200).json(dbUserData);
         });
