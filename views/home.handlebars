@@ -32,9 +32,11 @@
         <div class="channel__header__info"> <i class="icon-rocket"></i><span>+ Add a Bookmark</span><span class="explanation">Memes and Randoms</span></div>
     </div>
     <div class="channel__body">
-    <div class="channel__input">
-        <input type="text" placeholder="Comment"/>
-        <button class="js-emoji"><i class="icon-emotsmile"></i></button>
+        <div id="comments" class="comments"></div>
+    {{!-- this div coded by diego --}}
+    <div id="channelInput" class="channel__input">
+          <input type="text" placeholder="Add a comment" id="commentInput"/>
+          <button type="button" class="js-emoji" id="buttonComment">Add Comment</button>
     </div>
     </div>
 </section>
@@ -48,6 +50,7 @@
     <script src="./js/vendor/foundation.js"></script>
     <script  src="./js/app.js"></script>
     <script src="./js/logout.js"></script>
+    <script src="./js/postComment.js"></script>
 </body>
 
 </html>
