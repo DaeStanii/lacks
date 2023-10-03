@@ -15,6 +15,7 @@ if (process.env.MYSQL_URL) {
             host: 'localhost',
             dialect: 'mysql',
             //port: 3000
+
         }
     );
 }
