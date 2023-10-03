@@ -6,18 +6,20 @@ const postCommentButton = document.querySelector('#buttonComment');
 
 const getLoggedInUser2 =  async () => {
 	const loggedInUser = await fetch('/api/currentuser');
-	return loggedInUser;
+    const response = loggedInUser.json(loggedInUser)
+	return response;
 };  
 
-const loggedInUser2 = getLoggedInUser2();
 
 postCommentButton.addEventListener('click', async (event) => {
     event.preventDefault();
-    //need to add the id of the comment text box
+    const loggedInUser2 = await getLoggedInUser2();
+    
     const commentText =  document.querySelector('#commentInput').value.trim();
-    const commentInput = document.getElementById('commentInput');
-    //const commentText = commentInput.value;
-    if (commentText.trim() !== '') {
+    
+    console.log(commentText);
+    if (commentText !== '') {
+        console.log(loggedInUser2);
         const commentDiv = document.createElement('div');
         commentDiv.classList.add('comment');
         commentDiv.innerHTML = `
@@ -25,6 +27,7 @@ postCommentButton.addEventListener('click', async (event) => {
             <div class="message__profile"><img src="/images/lacks logo.jpg" alt="Profile Picture"/></div>
             <div class="message__content"
             <div class="message__sender"><a>${loggedInUser2.username}</a><span class=" time js-time"></span></div>
+            <hr>
             <div class="message__text">${commentText}<div>
             </div>
             </div>
@@ -36,27 +39,28 @@ postCommentButton.addEventListener('click', async (event) => {
     }
 
     //need to add the id/class of whatever thread/channel we are posting in
-    const parentPost = document.querySelector('.active').getAttribute('data-switch');
+    //const parentPost = document.querySelector('.active').getAttribute('data-switch');
 
-    const sendComment = await fetch('/api/comment', {
-        method:'POST',
-        body: JSON.stringify({
-            comment_content: commentText,
-            parent_post: parentPost,
-            user_id: loggedInUser2.user_id
-        })
-    });
+    // const sendComment = await fetch('/api/comment', {
+    //     method:'POST',
+    //     body: JSON.stringify({
+    //         comment_content: commentText,
+    //         parent_post: parentPost,
+    //         user_id: loggedInUser2.user_id
+    //     }),
+    //     headers: { 'Content-Type': 'application/json' },
+    // });
 
-    if (sendComment.status == 400) {
-        console.log('400 error has occurred: \n');
-        const response = await sendComment.json();
-        console.log(response.message);
-    } else if (sendComment.status == 500) {
-        console.log('500 error has occurred: \n');
-        const response = await sendComment.json();
-        console.log(response);
-    } else {
-        const response = await sendComment.json();
-        console.log('comment saved to db!');
-    }
+    // if (sendComment.status == 400) {
+    //     console.log('400 error has occurred: \n');
+    //     const response = await sendComment.json();
+    //     console.log(response.message);
+    // } else if (sendComment.status == 500) {
+    //     console.log('500 error has occurred: \n');
+    //     const response = await sendComment.json();
+    //     console.log(response);
+    // } else {
+    //     const response = await sendComment.json();
+    //     console.log('comment saved to db!');
+    // }
 });
