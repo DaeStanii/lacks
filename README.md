@@ -9,7 +9,7 @@ Lacks is a simple messaging and chat site, centered around our current bootcamp 
 ## Installation
 Installation shoudln't be necessary, as it is hosted on railway.app. You can see it for yourself in action here:
 
-link-to-railway-here
+[https://lacks-production.up.railway.app/](https://lacks-production.up.railway.app/)
 
 ## Usage
 When you first visit Lacks, you'll be asked to sign in first. If you don't have an account yet, feel free to create one.           
